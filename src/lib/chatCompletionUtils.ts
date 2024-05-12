@@ -5,23 +5,11 @@ import {
   type ChatCompletionToolMessageParam,
 } from 'openai/resources';
 
-export const isAssistantMessage = (
-  message: ChatCompletionMessageParam | null | undefined,
-): message is ChatCompletionAssistantMessageParam => {
-  return message?.role === 'assistant';
-};
+export const isAssistantMessage = (message: ChatCompletionMessageParam | null | undefined) => message?.role === 'assistant';
 
-export const isFunctionMessage = (
-  message: ChatCompletionMessageParam | null | undefined,
-): message is ChatCompletionFunctionMessageParam => {
-  return message?.role === 'function';
-};
+export const isFunctionMessage = (message: ChatCompletionMessageParam | null | undefined) => message?.role === 'function';
 
-export const isToolMessage = (
-  message: ChatCompletionMessageParam | null | undefined,
-): message is ChatCompletionToolMessageParam => {
-  return message?.role === 'tool';
-};
+export const isToolMessage = (message: ChatCompletionMessageParam | null | undefined) => message?.role === 'tool';
 
 export function isPresent<T>(obj: T | null | undefined): obj is T {
   return obj != null;

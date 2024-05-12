@@ -83,13 +83,11 @@ describe('instantiate client', () => {
     const client = new OpenAI({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',
-      fetch: (url) => {
-        return Promise.resolve(
+      fetch: (url) => Promise.resolve(
           new Response(JSON.stringify({ url, custom: true }), {
             headers: { 'Content-Type': 'application/json' },
           }),
-        );
-      },
+        ),
     });
 
     const response = await client.get('/foo');
@@ -100,8 +98,7 @@ describe('instantiate client', () => {
     const client = new OpenAI({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       apiKey: 'My API Key',
-      fetch: (...args) => {
-        return new Promise((resolve, reject) =>
+      fetch: (...args) => new Promise((resolve, reject) =>
           setTimeout(
             () =>
               defaultFetch(...args)
@@ -109,8 +106,7 @@ describe('instantiate client', () => {
                 .catch(reject),
             300,
           ),
-        );
-      },
+        ),
     });
 
     const controller = new AbortController();

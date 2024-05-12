@@ -84,9 +84,7 @@ export const isBlobLike = (value: any): value is BlobLike & { arrayBuffer(): Pro
   typeof value.slice === 'function' &&
   typeof value.arrayBuffer === 'function';
 
-export const isUploadable = (value: any): value is Uploadable => {
-  return isFileLike(value) || isResponseLike(value) || isFsReadStream(value);
-};
+export const isUploadable = (value: any) => isFileLike(value) || isResponseLike(value) || isFsReadStream(value);
 
 export type ToFileInput = Uploadable | Exclude<BlobLikePart, string> | AsyncIterable<BlobLikePart>;
 

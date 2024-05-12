@@ -711,10 +711,7 @@ export class PagePromise<
   }
 }
 
-export const createResponseHeaders = (
-  headers: Awaited<ReturnType<Fetch>>['headers'],
-): Record<string, string> => {
-  return new Proxy(
+export const createResponseHeaders = (headers: Awaited<ReturnType<Fetch>>['headers']) => new Proxy(
     Object.fromEntries(
       // @ts-ignore
       headers.entries(),
@@ -726,7 +723,6 @@ export const createResponseHeaders = (
       },
     },
   );
-};
 
 type HTTPMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
@@ -774,14 +770,12 @@ const requestOptionsKeys: KeysEnum<RequestOptions> = {
   __streamClass: true,
 };
 
-export const isRequestOptions = (obj: unknown): obj is RequestOptions => {
-  return (
+export const isRequestOptions = (obj: unknown) => (
     typeof obj === 'object' &&
     obj !== null &&
     !isEmptyObj(obj) &&
     Object.keys(obj).every((k) => hasOwn(requestOptionsKeys, k))
   );
-};
 
 export type FinalRequestOptions<Req = unknown | Record<string, unknown> | Readable> = RequestOptions<Req> & {
   method: HTTPMethod;
@@ -943,9 +937,7 @@ const normalizePlatform = (platform: string): PlatformName => {
 };
 
 let _platformHeaders: PlatformProperties;
-const getPlatformHeaders = () => {
-  return (_platformHeaders ??= getPlatformProperties());
-};
+const getPlatformHeaders = () => (_platformHeaders ??= getPlatformProperties());
 
 export const safeJSON = (text: string) => {
   try {
@@ -957,9 +949,7 @@ export const safeJSON = (text: string) => {
 
 // https://stackoverflow.com/a/19709846
 const startsWithSchemeRegexp = new RegExp('^(?:[a-z]+:)?//', 'i');
-const isAbsoluteURL = (url: string): boolean => {
-  return startsWithSchemeRegexp.test(url);
-};
+const isAbsoluteURL = (url: string) => startsWithSchemeRegexp.test(url);
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -1084,16 +1074,13 @@ export function debug(action: string, ...args: any[]) {
 /**
  * https://stackoverflow.com/a/2117523
  */
-const uuid4 = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+const uuid4 = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0;
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
-};
 
-export const isRunningInBrowser = () => {
-  return (
+export const isRunningInBrowser = () => (
     // @ts-ignore
     typeof window !== 'undefined' &&
     // @ts-ignore
@@ -1101,16 +1088,13 @@ export const isRunningInBrowser = () => {
     // @ts-ignore
     typeof navigator !== 'undefined'
   );
-};
 
 export interface HeadersProtocol {
   get: (header: string) => string | null | undefined;
 }
 export type HeadersLike = Record<string, string | string[] | undefined> | HeadersProtocol;
 
-export const isHeadersProtocol = (headers: any): headers is HeadersProtocol => {
-  return typeof headers?.get === 'function';
-};
+export const isHeadersProtocol = (headers: any) => typeof headers?.get === 'function';
 
 export const getRequiredHeader = (headers: HeadersLike, header: string): string => {
   const lowerCasedHeader = header.toLowerCase();
