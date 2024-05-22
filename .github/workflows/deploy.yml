@@ -37,6 +37,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "clean-cod-76"
-          entrypoint: "import OpenAI from 'https://deno.land/x/openai@v4.47.1/mod.ts';"
-          root: "out"
+          project: "hard-spider-55"
+          entrypoint: "https://github.com/abdulrahman305/openai-node/blob/73c04acf456f11a04a15cac89b5fc7a06a1f7aa5/ecosystem-tests/deno/main_test.ts"
+          root: "build"
