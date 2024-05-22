@@ -38,5 +38,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "hard-spider-55"
-          entrypoint: "https://github.com/abdulrahman305/openai-node/blob/73c04acf456f11a04a15cac89b5fc7a06a1f7aa5/ecosystem-tests/deno/main_test.ts"
+          entrypoint: "https://github.com/abdulrahman305/openai-node/scripts/build-deno"
           root: "build"
