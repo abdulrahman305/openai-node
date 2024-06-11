@@ -1,5 +1,29 @@
 # Changelog
 
+## 4.50.0 (2024-06-10)
+
+Full Changelog: [v4.49.1...v4.50.0](https://github.com/openai/openai-node/compare/v4.49.1...v4.50.0)
+
+### Features
+
+* support `application/octet-stream` request bodies ([#892](https://github.com/openai/openai-node/issues/892)) ([51661c8](https://github.com/openai/openai-node/commit/51661c8068d4990df6916becb6bb85353b54ef4d))
+
+## 4.49.1 (2024-06-07)
+
+Full Changelog: [v4.49.0...v4.49.1](https://github.com/openai/openai-node/compare/v4.49.0...v4.49.1)
+
+### Bug Fixes
+
+* remove erroneous thread create argument ([#889](https://github.com/openai/openai-node/issues/889)) ([a9f898e](https://github.com/openai/openai-node/commit/a9f898ee109a0b35a672e41c6497f3a75eff7734))
+
+## 4.49.0 (2024-06-06)
+
+Full Changelog: [v4.48.3...v4.49.0](https://github.com/openai/openai-node/compare/v4.48.3...v4.49.0)
+
+### Features
+
+* **api:** updates ([#887](https://github.com/openai/openai-node/issues/887)) ([359eeb3](https://github.com/openai/openai-node/commit/359eeb33b08b371451f216d1e21dd3334ec15f36))
+
 ## 4.48.3 (2024-06-06)
 
 Full Changelog: [v4.48.2...v4.48.3](https://github.com/openai/openai-node/compare/v4.48.2...v4.48.3)
