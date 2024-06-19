@@ -44,7 +44,7 @@ expect.extend({
   },
 });
 
-it(`raw response`, async function () {
+it(`raw response`, () => {
   const response = await client.chat.completions
     .create({
       model: 'gpt-4',

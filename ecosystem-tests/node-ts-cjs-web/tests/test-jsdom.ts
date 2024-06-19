@@ -59,7 +59,7 @@ expect.extend({
   },
 });
 
-test(`basic request works`, async function () {
+test(`basic request works`, () => {
   const completion = await client.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
@@ -68,7 +68,7 @@ test(`basic request works`, async function () {
 });
 
 // response bodies aren't working with the chosen polyfills
-it.skip(`raw response`, async function () {
+it.skip(`raw response`, () => {
   const response = await client.chat.completions
     .create({
       model: 'gpt-4',
@@ -102,7 +102,7 @@ it.skip(`raw response`, async function () {
 });
 
 // response bodies aren't working with the chosen polyfills
-it.skip(`streaming works`, async function () {
+it.skip(`streaming works`, () => {
   const stream = await client.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
@@ -116,7 +116,7 @@ it.skip(`streaming works`, async function () {
 });
 
 // file uploads aren't working with the chosen polyfills
-it.skip('handles builtinFile', async function () {
+it.skip('handles builtinFile', () => {
   const file = await fetch(url)
     .then((x) => x.arrayBuffer())
     .then((x) => new File([x], filename));
@@ -125,7 +125,7 @@ it.skip('handles builtinFile', async function () {
   expect(result.text).toBeSimilarTo(correctAnswer, 12);
 });
 
-it.skip('handles Response', async function () {
+it.skip('handles Response', () => {
   const file = await fetch(url);
 
   const result = await client.audio.transcriptions.create({ file, model });
@@ -135,32 +135,32 @@ it.skip('handles Response', async function () {
 const fineTune = `{"prompt": "<prompt text>", "completion": "<ideal generated text>"}`;
 
 describe.skip('toFile', () => {
-  it('handles builtin Blob', async function () {
-    const result = await client.files.create({
+  it('handles builtin Blob', () => {
+  const result = await client.files.create({
       file: await toFile(new Blob([new TextEncoder().encode(fineTune)]), 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
-  it('handles Uint8Array', async function () {
-    const result = await client.files.create({
+});
+  it('handles Uint8Array', () => {
+  const result = await client.files.create({
       file: await toFile(new TextEncoder().encode(fineTune), 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
-  it('handles ArrayBuffer', async function () {
-    const result = await client.files.create({
+});
+  it('handles ArrayBuffer', () => {
+  const result = await client.files.create({
       file: await toFile(new TextEncoder().encode(fineTune).buffer, 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
-  it('handles DataView', async function () {
-    const result = await client.files.create({
+});
+  it('handles DataView', () => {
+  const result = await client.files.create({
       file: await toFile(new DataView(new TextEncoder().encode(fineTune).buffer), 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
+});
 });

@@ -145,8 +145,7 @@ export class Stream<Item> implements AsyncIterable<Item> {
     const right: Array<Promise<IteratorResult<Item>>> = [];
     const iterator = this.iterator();
 
-    const teeIterator = (queue: Array<Promise<IteratorResult<Item>>>): AsyncIterator<Item> => {
-      return {
+    const teeIterator = (queue: Array<Promise<IteratorResult<Item>>>) => {
         next: () => {
           if (queue.length === 0) {
             const result = iterator.next();
@@ -156,7 +155,6 @@ export class Stream<Item> implements AsyncIterable<Item> {
           return queue.shift()!;
         },
       };
-    };
 
     return [
       new Stream(() => teeIterator(left), this.controller),
