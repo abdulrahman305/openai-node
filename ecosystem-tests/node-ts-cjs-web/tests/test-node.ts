@@ -53,7 +53,7 @@ expect.extend({
   },
 });
 
-it(`raw response`, async function () {
+it(`raw response`, () => {
   const response = await client.chat.completions
     .create({
       model: 'gpt-4',
@@ -86,7 +86,7 @@ it(`raw response`, async function () {
   expect(json.choices[0]?.message.content || '').toBeSimilarTo('This is a test', 10);
 });
 
-it(`streaming works`, async function () {
+it(`streaming works`, () => {
   const stream = await client.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
@@ -100,17 +100,17 @@ it(`streaming works`, async function () {
 });
 
 if (typeof File !== 'undefined') {
-  it('handles builtinFile', async function () {
-    const file = await fetch(url)
+  it('handles builtinFile', () => {
+  const file = await fetch(url)
       .then((x) => x.arrayBuffer())
       .then((x) => new File([x], filename));
 
     const result = await client.audio.transcriptions.create({ file, model });
     expect(result.text).toBeSimilarTo(correctAnswer, 12);
-  });
+});
 }
 
-it('handles Response', async function () {
+it('handles Response', () => {
   const file = await fetch(url);
 
   const result = await client.audio.transcriptions.create({ file, model });
@@ -121,33 +121,33 @@ const fineTune = `{"prompt": "<prompt text>", "completion": "<ideal generated te
 
 describe('toFile', () => {
   if (typeof Blob !== 'undefined') {
-    it('handles builtin Blob', async function () {
-      const result = await client.files.create({
+    it('handles builtin Blob', () => {
+  const result = await client.files.create({
         file: await toFile(new Blob([new TextEncoder().encode(fineTune)]), 'finetune.jsonl'),
         purpose: 'fine-tune',
       });
       expect(result.filename).toEqual('finetune.jsonl');
-    });
+});
   }
-  it('handles Uint8Array', async function () {
-    const result = await client.files.create({
+  it('handles Uint8Array', () => {
+  const result = await client.files.create({
       file: await toFile(new TextEncoder().encode(fineTune), 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
-  it('handles ArrayBuffer', async function () {
-    const result = await client.files.create({
+});
+  it('handles ArrayBuffer', () => {
+  const result = await client.files.create({
       file: await toFile(new TextEncoder().encode(fineTune).buffer, 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
-  it('handles DataView', async function () {
-    const result = await client.files.create({
+});
+  it('handles DataView', () => {
+  const result = await client.files.create({
       file: await toFile(new DataView(new TextEncoder().encode(fineTune).buffer), 'finetune.jsonl'),
       purpose: 'fine-tune',
     });
     expect(result.filename).toEqual('finetune.jsonl');
-  });
+});
 });
