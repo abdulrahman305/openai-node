@@ -1,5 +1,29 @@
 # Changelog
 
+## 4.77.4 (2025-01-08)
+
+Full Changelog: [v4.77.3...v4.77.4](https://github.com/openai/openai-node/compare/v4.77.3...v4.77.4)
+
+### Documentation
+
+* **readme:** fix misplaced period ([#1252](https://github.com/openai/openai-node/issues/1252)) ([c2fe465](https://github.com/openai/openai-node/commit/c2fe46522d59d1611ba8bb2b7e070f9be7264df0))
+
+## 4.77.3 (2025-01-03)
+
+Full Changelog: [v4.77.2...v4.77.3](https://github.com/openai/openai-node/compare/v4.77.2...v4.77.3)
+
+### Chores
+
+* **api:** bump spec version ([#1248](https://github.com/openai/openai-node/issues/1248)) ([37b3df9](https://github.com/openai/openai-node/commit/37b3df9ac6af76fea6eace8307aab9f0565e5660))
+
+## 4.77.2 (2025-01-02)
+
+Full Changelog: [v4.77.1...v4.77.2](https://github.com/openai/openai-node/compare/v4.77.1...v4.77.2)
+
+### Chores
+
+* bump license year ([#1246](https://github.com/openai/openai-node/issues/1246)) ([13197c1](https://github.com/openai/openai-node/commit/13197c1698f492529bd00b62d95f83c039ef0ac7))
+
 ## 4.77.1 (2024-12-21)
 
 Full Changelog: [v4.77.0...v4.77.1](https://github.com/openai/openai-node/compare/v4.77.0...v4.77.1)
